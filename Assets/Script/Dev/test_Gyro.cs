@@ -9,8 +9,6 @@ public class test_Gyro : Gyro
     protected override void Start()
     {
         base.Start ();
-
-        Debug.Log (gyroEnabled);
     }
 
     // Update is called once per frame
@@ -18,7 +16,7 @@ public class test_Gyro : Gyro
     {
         if (gyroEnabled)
         {
-            transform.rotation = GyroToUnity();
+            transform.localRotation = GyroToUnity();
         }
     }
 }

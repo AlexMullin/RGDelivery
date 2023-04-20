@@ -7,12 +7,11 @@ public class Gyro : MonoBehaviour
     protected bool gyroEnabled = false;
     protected Gyroscope gyro;
 
-    private Quaternion baseRotation = Quaternion.identity;
 
     // Start is called before the first frame update
     protected virtual void Start ()
     {
-
+        //baseRotation = Quaternion.Euler (Vector3.zero);
 
         //If there's an error, tell me
         if (! EnableGyro ())
@@ -21,6 +20,8 @@ public class Gyro : MonoBehaviour
             
             Debug.Log (name + ": Gyro not found");
         }
+
+
     }
 
 
@@ -33,8 +34,6 @@ public class Gyro : MonoBehaviour
             gyro = Input.gyro;
 
             Input.gyro.enabled = true;
-
-            baseRotation = Quaternion.Euler(0, 0, 0);
             
             return true;
         }
@@ -46,6 +45,16 @@ public class Gyro : MonoBehaviour
     {
         Quaternion q = gyro.attitude;
 
-        return q * baseRotation;
+        Quaternion currentRotation = new Quaternion (q.x, q.y, -q.z, -q.w);
+
+
+        return currentRotation;
+    }
+
+    public void CalibrateGyro()
+    {
+        //Debug.Log ("Current Rotation: " + baseRotation);
+        //baseRotation = gyro.attitude;
+        //Debug.Log ("New Rotation: " + baseRotation);
     }
 }
