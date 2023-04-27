@@ -22,6 +22,13 @@ public class Gyro : MonoBehaviour
         }
 
 
+        if(GameObject.Find("GyroContainer") == null)
+        {
+            Instantiate (new GameObject ("GyroContainer"), new Vector3 (0, 0, 0), Quaternion.Euler(90, 0, 90));
+        }
+
+        transform.parent = GameObject.Find ("GyroContainer").transform;
+
     }
 
 
