@@ -29,7 +29,7 @@ public class Flickable : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
