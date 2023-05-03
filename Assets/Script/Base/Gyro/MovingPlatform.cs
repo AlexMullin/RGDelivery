@@ -35,6 +35,7 @@ public class MovingPlatform : Gyro
             {
 
                 rb.velocity = Vector3.MoveTowards(rb.velocity, (movement.normalized * speedMax), speedChange * Time.deltaTime);
+                //transform.Translate (Vector3.MoveTowards (rb.velocity, (movement.normalized * speedMax), 1 * Time.deltaTime));
             }
             else
             {

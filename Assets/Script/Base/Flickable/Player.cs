@@ -17,4 +17,12 @@ public class Player : Flickable
             transform.parent = other.gameObject.transform;
         }
     }
+
+    private void OnTriggerExit (Collider other)
+    {
+        if(other.CompareTag("PlatformMoving") && transform.parent == other.gameObject.transform)
+        {
+            transform.parent = null;
+        }
+    }
 }

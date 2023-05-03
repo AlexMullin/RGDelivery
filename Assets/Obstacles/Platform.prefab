@@ -158,14 +158,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 13f38c5ddb921e74990b8cf3d84b1ba4, type: 3}
   m_PrefabInstance: {fileID: 8930877921279454573}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &7342506809526220037
+--- !u!64 &8680733178307706776
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8588843838518366268}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ce7decc1bbb74d0468a9f2ca10c0b24d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

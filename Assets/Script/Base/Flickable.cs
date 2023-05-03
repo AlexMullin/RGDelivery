@@ -62,9 +62,8 @@ public class Flickable : MonoBehaviour
 
                     if ((touchCurrentPos - touchStartPos).magnitude * Time.deltaTime >= flickThreshold)
                     {
-                        
-                        DeactivateTouch();
                         moveByFlick ();
+                        DeactivateTouch ();
                     }
 
                     touchStartPos = touchCurrentPos;
@@ -99,9 +98,7 @@ public class Flickable : MonoBehaviour
         //Touch has been released
         else if (touchSingle)
         {
-            touchSingle = false;
-
-
+            DeactivateTouch();
             Debug.Log ("Touch Released");
         }
     }
@@ -122,7 +119,8 @@ public class Flickable : MonoBehaviour
         touchSingle = false;
         touchActive = false;
 
-
+        flickLaunchBuildup = 0;
+        flickLuanchDisperseTime = 0;
     }
 
     private void moveByFlick ()
@@ -136,7 +134,7 @@ public class Flickable : MonoBehaviour
 
 
         rb.angularVelocity = Vector3.zero;
-        rb.velocity = direction3.normalized * flickLaunchForce * (flickLaunchBuildup / flickLaunchBuildupMax);
+        rb.AddForce (direction3.normalized * flickLaunchForce * (flickLaunchBuildup / flickLaunchBuildupMax), ForceMode.VelocityChange);
     }
 
 }
