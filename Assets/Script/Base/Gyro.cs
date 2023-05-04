@@ -7,6 +7,11 @@ public class Gyro : MonoBehaviour
     protected bool gyroEnabled = false;
     protected Gyroscope gyro;
 
+    public static bool 
+        flipX = false, 
+        flipY = false, 
+        flipZ = false;
+
 
     // Start is called before the first frame update
     protected virtual void Start ()
@@ -54,9 +59,24 @@ public class Gyro : MonoBehaviour
 
         Quaternion currentRotation = new Quaternion (q.x, q.y, -q.z, -q.w);
 
+        Vector3 temp = currentRotation.eulerAngles;
+        temp = new Vector3
+            (
+                temp.x * ((flipX) ? -1 : 1),
+                temp.y * ((flipY) ? -1 : 1),
+                temp.z * ((flipZ) ? -1 : 1)
+            );
+
+        currentRotation = Quaternion.Euler (temp);
 
         return currentRotation;
     }
+
+    public void reverseInputX () { flipX = !flipX; }
+
+    public void reverseInputY () { flipY = !flipY; }
+
+    public void reverseInputZ () { flipZ = !flipZ; }
 
     public void CalibrateGyro()
     {

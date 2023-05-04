@@ -12,7 +12,7 @@ public class Player : Flickable
 
         cam = GameObject.Find ("Main Camera").GetComponent<CameraMovement> ();
 
-        cam.followChargeSpeed = 1 / (flickLaunchBuildupMax * 100);
+        cam.followChargeSpeed = 1 / (flickLaunchBuildupMax * 10);
 
     }
 
