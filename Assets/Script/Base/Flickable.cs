@@ -7,14 +7,24 @@ using UnityEngine;
 public class Flickable : MonoBehaviour
 {
 
-    [SerializeField]
-    protected float
-        flickThreshold = 0.18f, //How fast do you move your touch to flick?
-        flickLaunchForce = 10, //What is the maximum strength of the lauch?
-        flickLaunchBuildup = 0, //Current buildup of the flickPower
-        flickLaunchBuildupMax = 4, //How long does it take to reach maximum strengh?
-        flickLaunchTimeLimit = 5,//How long until your launch times out?
-        flickLuanchDisperseTime; //How long have you been at max power?
+    public float
+        //What is the maximum strength of the lauch?
+        flickLaunchForce = 10, 
+        
+        //How long does it take to reach maximum strengh?
+        flickLaunchBuildupMax = 4, 
+        
+        //How long until your launch times out?
+        flickLaunchTimeLimit = 5 
+        ; 
+
+    private float
+        //How long have you been at max power?
+        flickLuanchDisperseTime = 0,
+        
+        //Current buildup of the flickPower
+        flickLaunchBuildup = 0
+        ; 
 
 
     //Strech goal: 2nd Touch deactivates movement, but a 3rd touch can reactivate movement
@@ -27,7 +37,7 @@ public class Flickable : MonoBehaviour
 
     Rigidbody rb;
 
-    Camera cam;
+    protected Camera cam;
 
 
     // Start is called before the first frame update
@@ -77,7 +87,7 @@ public class Flickable : MonoBehaviour
 
                     touchCurrentPos = Input.touches[0].position;
 
-                    if ((touchCurrentPos - touchStartPos).magnitude * Time.deltaTime >= flickThreshold)
+                    if ((touchCurrentPos - touchStartPos).magnitude * Time.deltaTime >= GameSettings.flickThreshold)
                     {
                         moveByFlick ();
                         DeactivateTouch ();

@@ -21,8 +21,6 @@ public class CameraMovement : Gyro
 
 
     const int ROTATION_AMOUNT = 45;
-    public float cameraFlickSpeed = 0.1f;
-    public float cameraTurnSpeed;
     Quaternion targetRotation;
 
     bool touchDouble = false;
@@ -85,7 +83,7 @@ public class CameraMovement : Gyro
             {
                 //Did you flick hard enough?
                 Vector2 touchDelta = touchStartPos - touchCurrentPos;
-                if (touchDelta.magnitude * Time.deltaTime >= cameraFlickSpeed)
+                if (touchDelta.magnitude * Time.deltaTime >= GameSettings.flickThreshold)
                 {
                     //Change the target rotation of pivot
                     targetRotation = pivot.transform.rotation * Quaternion.Euler (0, (touchDelta.x > 0) ? ROTATION_AMOUNT : -ROTATION_AMOUNT, 0);
@@ -101,7 +99,7 @@ public class CameraMovement : Gyro
         }
 
         //Lerp the rotation of the pivot to the desired location
-        pivot.transform.rotation = Quaternion.Lerp (pivot.transform.rotation, targetRotation, cameraTurnSpeed);
+        pivot.transform.rotation = Quaternion.Lerp (pivot.transform.rotation, targetRotation, followChargeSpeed);
     }
 
     private void FixedUpdate ()

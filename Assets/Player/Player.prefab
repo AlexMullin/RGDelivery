@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b4ad35d898024fa6656d1f90900ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickThreshold: 10
+  flickThreshold: 5
   flickLaunchForce: 10
-  flickLaunchBuildup: 2
+  flickLaunchBuildup: 0
   flickLaunchBuildupMax: 4
   flickLaunchTimeLimit: 2
   flickLuanchDisperseTime: 0

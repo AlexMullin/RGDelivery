@@ -255,10 +255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flickThreshold: 0.18
   flickLaunchForce: 10
-  flickLaunchBuildup: 1
   flickLaunchBuildupMax: 4
   flickLaunchTimeLimit: 5
-  flickLuanchDisperseTime: 0
 --- !u!54 &479491876
 Rigidbody:
   m_ObjectHideFlags: 0

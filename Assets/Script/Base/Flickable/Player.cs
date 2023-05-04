@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Flickable
 {
-    CameraMovement cam;
+    CameraMovement camScript;
     // Start is called before the first frame update
     protected override void Start ()
     {
         base.Start ();
 
-        cam = GameObject.Find ("Main Camera").GetComponent<CameraMovement> ();
+        camScript = cam.GetComponent<CameraMovement> ();
 
-        cam.followChargeSpeed = 1 / (flickLaunchBuildupMax * 10);
+        camScript.followChargeSpeed = 1 / (flickLaunchBuildupMax * 10);
 
     }
 
@@ -25,12 +26,18 @@ public class Player : Flickable
         //charge point
         if (touchSingle && touchActive )
         {
-            cam.updateChargePosition (true);
+            camScript.updateChargePosition (true);
         }
         else
         {
             //Otherwise bring it back to the default position quickly.
-            cam.updateChargePosition(false);
+            camScript.updateChargePosition(false);
+        }
+
+
+        if (transform.position.y < -10 )
+        {
+            SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
         }
     }
 
