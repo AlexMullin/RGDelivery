@@ -8,7 +8,7 @@ public class Flickable : MonoBehaviour
 {
 
     [SerializeField]
-    private float
+    protected float
         flickThreshold = 0.18f, //How fast do you move your touch to flick?
         flickLaunchForce = 10, //What is the maximum strength of the lauch?
         flickLaunchBuildup = 0, //Current buildup of the flickPower
@@ -19,8 +19,8 @@ public class Flickable : MonoBehaviour
 
     //Strech goal: 2nd Touch deactivates movement, but a 3rd touch can reactivate movement
 
-    bool touchSingle = false; //Is there only one touch on the screen?
-    bool touchActive = false; //Is this object in particular clicked on?
+    protected bool touchSingle = false; //Is there only one touch on the screen?
+    protected bool touchActive = false; //Is this object in particular clicked on?
 
     Vector2 touchStartPos = Vector2.zero;
     Vector2 touchCurrentPos = Vector2.zero;
@@ -35,7 +35,7 @@ public class Flickable : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
 
         //A touch has happened
@@ -99,7 +99,6 @@ public class Flickable : MonoBehaviour
         else if (touchSingle)
         {
             DeactivateTouch();
-            Debug.Log ("Touch Released");
         }
     }
 
