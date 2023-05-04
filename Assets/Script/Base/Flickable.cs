@@ -27,11 +27,15 @@ public class Flickable : MonoBehaviour
 
     Rigidbody rb;
 
+    Camera cam;
+
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -47,6 +51,19 @@ public class Flickable : MonoBehaviour
 
                 touchStartPos = Input.touches[0].position;
                 touchCurrentPos = Input.touches[0].position;
+
+
+                Ray ray = cam.ScreenPointToRay(Input.touches[0].position);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit) )
+                {
+                    if (hit.transform.gameObject.GetComponent<Flickable>() == this)
+                    {
+                        touchActive = true;
+                        flickLaunchBuildup = 0;
+                    }
+                }
             }
 
 
@@ -103,6 +120,8 @@ public class Flickable : MonoBehaviour
     }
 
     //Player clicks on the object with their first touch, activate touch controls.
+
+    /*
     private void OnMouseDown ()
     {
         if(Input.touchCount == 1)
@@ -112,7 +131,7 @@ public class Flickable : MonoBehaviour
 
         }
     }
-
+    */
     private void DeactivateTouch ()
     {
         touchSingle = false;
