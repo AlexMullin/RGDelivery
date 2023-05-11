@@ -12,10 +12,10 @@ public class Flickable : MonoBehaviour
         flickLaunchForce = 10, 
         
         //How long does it take to reach maximum strengh?
-        flickLaunchBuildupMax = 4, 
+        flickLaunchBuildupMax = 10, 
         
         //How long until your launch times out?
-        flickLaunchTimeLimit = 5 
+        flickLaunchTimeLimit = 2 
         ; 
 
     private float
@@ -71,7 +71,7 @@ public class Flickable : MonoBehaviour
                     if (hit.transform.gameObject.GetComponent<Flickable>() == this)
                     {
                         touchActive = true;
-                        flickLaunchBuildup = 0;
+                        //flickLaunchBuildup = 0;
                     }
                 }
             }
@@ -122,12 +122,22 @@ public class Flickable : MonoBehaviour
                 }
             }
 
+            
+
         }
 
         //Touch has been released
         else if (touchSingle)
         {
             DeactivateTouch();
+        }
+
+        //Object is just chilling
+        else
+        {
+            if(flickLaunchBuildup > 0)
+                flickLaunchBuildup = Mathf.Lerp(flickLaunchBuildup, 0, (1 / flickLaunchBuildupMax) * Time.deltaTime);
+                //flickLaunchBuildup -= Time.deltaTime;
         }
     }
 
@@ -149,7 +159,7 @@ public class Flickable : MonoBehaviour
         touchSingle = false;
         touchActive = false;
 
-        flickLaunchBuildup = 0;
+        //flickLaunchBuildup = 0;
         flickLuanchDisperseTime = 0;
     }
 

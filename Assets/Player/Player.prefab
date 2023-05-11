@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2552823060885254859}
   - component: {fileID: 2552823060885254858}
   - component: {fileID: 2552823060885254869}
+  - component: {fileID: 326175886016221778}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,12 +132,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b4ad35d898024fa6656d1f90900ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickThreshold: 5
-  flickLaunchForce: 10
-  flickLaunchBuildup: 0
-  flickLaunchBuildupMax: 4
+  flickLaunchForce: 8
+  flickLaunchBuildupMax: 2.5
   flickLaunchTimeLimit: 2
-  flickLuanchDisperseTime: 0
+  Rings:
+  - {fileID: 3854442760427698197}
+  - {fileID: 751993146578736470}
+  - {fileID: 671344923744369517}
+  mat: {fileID: 2100000, guid: f1d4dfdf4dea77a42908db129855f037, type: 2}
+  ChargeEmission:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0.5587921, b: 0, a: 0}
+--- !u!114 &326175886016221778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552823060885254868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7660b36d7fb3854c8a952701ab8f0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickCooldownTime: 1
+  jumpHeight: 1
 --- !u!1001 &400945124118775356
 PrefabInstance:
   m_ObjectHideFlags: 0

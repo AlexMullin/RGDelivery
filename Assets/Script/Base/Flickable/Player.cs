@@ -7,6 +7,12 @@ public class Player : Flickable
 {
     CameraMovement camScript;
     // Start is called before the first frame update
+
+    public GameObject [] Rings;
+
+    public Material mat;
+
+    public Color [] ChargeEmission;
     protected override void Start ()
     {
         base.Start ();
@@ -27,11 +33,34 @@ public class Player : Flickable
         if (touchSingle && touchActive )
         {
             camScript.updateChargePosition (true);
+            foreach (GameObject ring in Rings )
+            {
+                MeshRenderer col = ring.GetComponent<MeshRenderer> ();
+
+                col.material.SetColor
+                    (
+                    "_EmissionColor",
+                    Color.Lerp (col.material.GetColor ("_EmissionColor"), ChargeEmission [1], (1 / flickLaunchBuildupMax) * Time.deltaTime)
+                    );
+            }
+
         }
         else
         {
             //Otherwise bring it back to the default position quickly.
             camScript.updateChargePosition(false);
+
+            foreach ( GameObject ring in Rings )
+            {
+                MeshRenderer col = ring.GetComponent<MeshRenderer> ();
+
+                col.material.SetColor
+                    (
+                    "_EmissionColor",
+                    Color.Lerp (col.material.GetColor ("_EmissionColor"), ChargeEmission [0], (1 / flickLaunchBuildupMax) * Time.deltaTime)
+                    //ChargeEmission [0]
+                    );
+            }
         }
 
 

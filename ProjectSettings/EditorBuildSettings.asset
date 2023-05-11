@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Settings_Flick.unity
     guid: 846e260cdb8ac0542bcce55537a030af
   - enabled: 1
-    path: Assets/Scenes/Levels/Lv01.unity
+    path: Assets/Scenes/Levels/Lv02.unity
     guid: 8c90053b2e9122b43b22e849342fc0c2
   m_configObjects: {}

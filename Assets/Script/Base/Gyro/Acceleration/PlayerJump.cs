@@ -14,9 +14,4 @@ public class PlayerJump : Acceleration
             GetComponent<Rigidbody> ().AddForce( Vector3.up * jumpHeight, ForceMode.Impulse);
         }
     }
-
-    private void OnCollisionEnter (Collision collision)
-    {
-        flickReady = true;
-    }
 }

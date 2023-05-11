@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CameraMovement : Gyro
+public class CameraMovement : MonoBehaviour
 {
     GameObject pivot;
     GameObject player;
@@ -18,7 +18,7 @@ public class CameraMovement : Gyro
 
     public float followChargeSpeed = 0.5f;
     public float followReturnSpeed = 0.1f; //How quickly does the camera return to position after being launched.
-
+    public float followRotationSpeed = 0.8f;
 
     const int ROTATION_AMOUNT = 45;
     Quaternion targetRotation;
@@ -37,9 +37,9 @@ public class CameraMovement : Gyro
     }
 
     // Start is called before the first frame update
-    protected override void Start ()
+    protected void Start ()
     {
-        base.Start ();
+        //base.Start ();
 
         player = GameObject.Find (("Player"));
 
@@ -99,7 +99,7 @@ public class CameraMovement : Gyro
         }
 
         //Lerp the rotation of the pivot to the desired location
-        pivot.transform.rotation = Quaternion.Lerp (pivot.transform.rotation, targetRotation, followChargeSpeed);
+        pivot.transform.rotation = Quaternion.Lerp (pivot.transform.rotation, targetRotation, followRotationSpeed);
     }
 
     private void FixedUpdate ()

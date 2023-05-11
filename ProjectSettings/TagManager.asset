@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlatformMoving
+  - Destination
   layers:
   - Default
   - TransparentFX
