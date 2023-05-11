@@ -281,6 +281,7 @@ MonoBehaviour:
   followStrength: 0.1
   followChargeSpeed: 0.5
   followReturnSpeed: 0.1
+  followRotationSpeed: 0.6
 --- !u!1001 &174487729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1206,6 +1207,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 534109899266734019, guid: b312c5ab69f75344b820562b2be1cd86, type: 3}
+      propertyPath: nextScene
+      value: Lv03
+      objectReference: {fileID: 0}
     - target: {fileID: 2729639688648441824, guid: b312c5ab69f75344b820562b2be1cd86, type: 3}
       propertyPath: m_RootOrder
       value: 1

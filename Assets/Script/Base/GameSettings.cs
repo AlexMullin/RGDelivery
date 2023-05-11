@@ -8,5 +8,5 @@ public static class GameSettings
     public static float
         //---TOUCH CONTROLLS
         flickThreshold = 0.5f,
-        shakeThreshold = 1f;
+        shakeThreshold = 0.5f;
 }
