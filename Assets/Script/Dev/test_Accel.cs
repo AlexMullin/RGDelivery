@@ -7,6 +7,7 @@ using UnityEngine;
 public class test_Accel : Acceleration
 {
     Rigidbody rb;
+    float flickLaunch = 10;
 
     // Start is called before the first frame update
     protected override void Start()

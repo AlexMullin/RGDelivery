@@ -87,8 +87,10 @@ public class Flickable : MonoBehaviour
 
                     touchCurrentPos = Input.touches[0].position;
 
+                    //Did you flick?
                     if ((touchCurrentPos - touchStartPos).magnitude * Time.deltaTime >= GameSettings.flickThreshold)
                     {
+                        Debug.Log ("Flicked!");
                         moveByFlick ();
                         DeactivateTouch ();
                     }

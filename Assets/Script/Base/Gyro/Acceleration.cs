@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Acceleration : Gyro
 {
-    public float flickSpeed = 5.0f;
-    public float flickLaunch = 10.0f;
     public float flickCooldownTime = 1.0f;
 
-    private bool flickReady = true;
+    protected bool flickReady = true;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -18,8 +16,11 @@ public class Acceleration : Gyro
 
     protected bool checkFlick ()
     {
-        if (flickReady && gyro.userAcceleration.magnitude > flickSpeed) 
+        
+        if (flickReady && gyro.userAcceleration.magnitude > GameSettings.shakeThreshold) 
         {
+            Debug.Log ("Phone Flicked");
+
             StartCoroutine (flickCooldown ());
             return true;
         }
